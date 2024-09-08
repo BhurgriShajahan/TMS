@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="base::layout(~{::section})"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>About us</title>
+
+   
+</head>
+
+  <body>
+    <main id="main">
+      <!-- ======= Contact Section ======= -->
+    <section class="breadcrumbs mt-5">
+      <div class="container mt-5">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>About</h2>
+          <ol>
+            <li><a th:href="@{/home}">Home</a></li>
+            <li>About</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+  </main>
+  <section>
+    <!-- About Section -->
+    <div class="about-section">
+        <div class="container alert alert-success">
+            <div class="row">
+                <div class="col-lg-6 pt-4 pt-lg-0">
+                    <h2 class="text-info bg-light text-center">About Us</h2>
+                    <h4>Welcome to Tutor Management</h4>
+                    <p>
+                        At Tutor Management, we are passionate about education and dedicated to providing a seamless
+                        experience for both tutors and learners. Our platform is designed to connect qualified tutors
+                        with students seeking personalized learning experiences.
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <img th:src="@{images/homeGirl.jpg}" alt="About Us Image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mission Section -->
+    <div class="mission-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h3 class="text-info">Our Mission</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <p>
+                        Our mission is to empower learners and educators alike by fostering a supportive and effective
+                        learning environment. We believe in the transformative power of education and aim to make
+                        quality tutoring accessible to all.
+                    </p>
+                    <ul>
+                        <li>We take pride in our rigorous tutor selection process.</li>
+                        <li>We understand that every student is unique.</li>
+                        <li>We are committed to excellence in education.</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <img th:src="@{images/people-working.jpg}" alt="Mission Image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+    <!-- End #main -->
+  
+</html>

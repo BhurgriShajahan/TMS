@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" media="screen and (min-width: 900px)" th:href="@{/css/widescreen.css}" />
+    <link rel="stylesheet" media="screen and (max-width: 600px)" th:href="@{/css/smallscreen.css}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>base</title>
+    <link rel="stylesheet" th:href="@{/css/mycss.css}" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+          integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <script th:src="@{/js/style.js}"></script>
+</head>
+<body class="bod">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <h5 class="text-light">T-Management</h5>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/admin/index}" title="Home"><i class="fas fa-home"></i> Home</a>
+            </li>
+             
+            <li class="nav-item">
+                <a th:href="@{/admin/sendNotification}" class="nav-link"><i class="fa-sharp fa-solid fa-bell"></i> Send
+                    Notification </a>
+            </li>
+            <li class="nav-item">
+                <span>
+                    <img th:src="@{'/images/'+${u.image}}" alt="" class="profile" title="Profile" />
+                </span>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link" th:text="${u.name.toUpperCase()}"></span>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <span class="text-light"><b >&vellip;</b> </span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#" th:href="@{/admin/myProfile}">Profile</a>
+                    <a class="dropdown-item" href="#" th:href="@{/admin/change-password}">Change Password</a>
+                    <a class="dropdown-item" href="#" th:href="@{/logout}">Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- this is dynamic content generator -->
+<div class="sidebar bg-dark">
+    <div class="text-center p-2">
+        <div class="cros text-right text-light" onclick="togle()">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        <img th:src="@{'/images/'+ ${u.image}}" alt="" class="profile" />
+        <div class="text-light">
+            <h4 th:text="${u.name}"></h4>
+            Mobile No:
+            <h6 th:text="${u.phone}"></h6>
+        </div>
+    </div>
+    <a th:href="@{/admin/index}" class="item"><i class="fas fa-home"></i> Home</a>
+    <a th:href="@{/admin/myProfile}" class="item"><i class="fas fa-user-circle"></i> My profile</a>
+    <a th:href="@{/admin/viewTeacher}" class="item"><i class="fas fa-chalkboard-teacher"></i> View Teachers</a>
+    <a th:href="@{/admin/viewStudent}" class="item"><i class="fas fa-users"></i> View Students</a>
+    <a th:href="@{/admin/viewCourses}" class="item"><i class="fas fa-book"></i> View Courses</a>
+    <a th:href="@{/admin/viewContact}" class="item"><i class="fas fa-address-book"></i> View Contact</a>
+    <a th:href="@{/admin/allNotifications}" class="item"><i class="fa-sharp fa-solid fa-bell"></i> View Notifications</a>
+    <a th:href="@{/logout}" class="item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+</div>
+<div class="content mt-5">
+    <div>
+        <i class="fas fa-bars fixed" id="navHide" onclick="togle()"></i>
+    </div>
+    <div th:replace="${content}"></div>
+</div>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        
+</body>
+</html>

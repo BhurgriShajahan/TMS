@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Contact</title>
+  
+</head>
+
+<body>
+
+  <main id="main">
+
+    <!-- ======= Contact Section ======= -->
+    <section class="breadcrumbs mt-5">
+      <div class="container mt-5">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Contact</h2>
+          <ol>
+            <li><a th:href="@{/home}">Home</a></li>
+            <li>Contact</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+    
+
+    <!-- ======= Contact Section ======= -->
+    <section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-6">
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="info-box">
+                  <i class="bx bx-map"></i>
+                  <h3>Our Address</h3>
+                  <p> Badin_Laar</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bx bx-envelope"></i>
+                  <h3>Email Us</h3>
+                  <p>laarians786@gmail.com<br>contact:03332233222</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bx bx-phone-call"></i>
+                  <h3>Call Us</h3>
+                  <p>03422332323
+                </div>
+              </div>
+            </div>
+
+          </div>
+                    
+          <div class="col-lg-6">
+                       <!-- Contact us form Success Or Failed Alert message  -->
+                    <div 
+                         th:if="${session.msg}"
+                         th:classappend="${session.msg.type}"
+                         class="alert"
+                         role="alert" >
+
+                         <p th:text="${session.msg.content}" class="text-center"></p>
+                         <th:block th:text="${@myservices.removeMessage()}"></th:block>
+                       
+                    </div>
+            <form th:action="@{/contactUsProcess}" th:method="post" th:object="${contactUs}">
+              <div class="form-row">
+                <div class="col-md-6 form-group">
+                
+                  <input type="text" 
+                         name="name" 
+                         class="form-control" id="name" 
+                         placeholder="Your Name" data-rule="minlen:4" 
+                         th:value="${contactUs.name}"
+                         th:classappend="${#fields.hasErrors('name')} ? 'is-invalid' : '' "/>
+                         
+                         <div class="invalid-feedback" 
+                                   th:each="i : ${#fields.errors('name')}">
+                                <p th:text="${i}" style="color:red"></p>
+                         </div>
+                </div>
+                
+                
+                <div class="col-md-6 form-group">
+                  <input type="email" class="form-control" 
+                         name="email" id="email" 
+                         placeholder="Your Email" 
+                         th:value="${contactUs.email}"
+                         th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : '' "/>
+
+						<div class="invalid-feedback" 
+                                   th:each="i : ${#fields.errors('email')}">
+                                <p th:text="${i}" style="color:red"></p>
+                         </div>
+                </div>
+                
+                
+                
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control"
+                       name="subject" id="subject" placeholder="Subject"
+                       th:value="${contactUs.subject}"
+                         th:classappend="${#fields.hasErrors('subject')} ? 'is-invalid' : '' "/>
+
+							<div class="invalid-feedback" 
+                                   th:each="i : ${#fields.errors('subject')}">
+                                <p th:text="${i}" style="color:red"></p>
+                            </div>
+              </div>
+              
+              
+              <div class="form-group">
+                <textarea class="form-control" 
+                          name="message" rows="5"  
+                          placeholder="Message"
+                          th:value="${contactUs.message}"
+                         th:classappend="${#fields.hasErrors('message')} ? 'is-invalid' : '' "/></textarea>
+						  <div class="invalid-feedback" 
+                                   th:each="i : ${#fields.errors('message')}">
+                                <p th:text="${i}" style="color:red"></p>
+                           </div>
+                 </div>
+                 
+                <div class="mb-3">
+              </div>
+              <div class="text-center " ><button type="submit" class="btn-primary">Submit</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+    
+</main>
+   
+</body>
+
+</html>

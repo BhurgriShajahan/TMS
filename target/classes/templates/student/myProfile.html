@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="/student/base::layout(~{::section})"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>profile</title>
+  </head>
+  <body>
+    <section>
+      <div class="container p-4">
+        <div class="row">
+          <div class="col-md-12 md-6 sm-4 ml-6">
+            <div class="card">
+              <div class="card-header">
+                <!-- Update Message Alert -->
+                <div
+                  th:if="${session.m}"
+                  th:classappend="${session.m.type}"
+                  class="alert alert-dismissble"
+                  role="alert"
+                >
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    x
+                  </button>
+                  <p th:text="${session.m.content}" class="text-center"></p>
+                  <th:block th:text="${@myservices.removeMessage()}"></th:block>
+                </div>
+                <h3 class="bg-dark p-4 sm-2 text-light text-center">
+                  <i class="fas fa-user-circle"></i>Personal Information
+                </h3>
+
+                <div class="card-body text-center">
+                  <!-- User Specific profile image -->
+                  <a th:href="@{'/student/editProfile/'+${user.id}}" type="file"
+                    ><img
+                      th:src="@{'/images/'+ ${user.image}}"
+                      alt=""
+                      class="myProfile file"
+                    />
+                  </a>
+
+                  <div>
+                    <h3
+                      th:text="${user.name.toUpperCase()}"
+                      style="color: green"
+                    ></h3>
+                  </div>
+                  <div class="table-responsive">
+                    <table
+                      class="table text-black text-center"
+                      style="background-color: white"
+                    >
+                      <tr>
+                        <th scope="col">Your email</th>
+                        <td>
+                          <span><a href="#" th:text="${user.email}"></a></span>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <th scope="col">Class</th>
+                        <td th:text="${user.standerd}" scope="col"></td>
+                      </tr>
+                      <tr>
+                        <th scope="col">Subject</th>
+                        <td th:text="${user.subject}" scope="col"></td>
+                      </tr>
+                      <tr>
+                        <th scope="col">Phone</th>
+                        <td th:text="${user.phone}"></td>
+                      </tr>
+
+                      <tr>
+                        <th scope="col">Going to</th>
+                        <td th:text="${user.going}"></td>
+                      </tr>
+                      <tr>
+                        <th scope="col">City</th>
+                        <td th:text="${user.city}"></td>
+                      </tr>
+                      <tr>
+                        <th scope="col" style="color: green">Account Active</th>
+                        <td th:text="${user.active}"></td>
+                      </tr>
+
+                      <tbody></tbody>
+                    </table>
+
+                    <div class="container text-center">
+                      <a
+                        class="btn btn-primary btn-block"
+                        th:href="@{'/student/editProfile/'+${user.id}}"
+                        >Edit</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

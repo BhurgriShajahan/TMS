@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="base::layout(~{::section})"
+>
+  <head></head>
+  <meta charset="UTF-8" />
+  <title>Home</title>
+
+  <body>
+    <section>
+      <!-- Hero Section -->
+      <div class="jumbotron text-center" id="mainHome">
+        <h1 class="display-8">Welcome to Tutor Management</h1>
+        <p>
+          Efficiently manage your tutors and enhance the learning experience.
+        </p>
+        <a
+          th:href="@{slogin}"
+          class="btn btn-primary btn-lg mt-4"
+          id="getStart_btn"
+          >Get Started</a
+        >
+      </div>
+
+      <!-- Features Section with Jumbotron Header -->
+      <div class="jumbotron text-center">
+        <h3 class="display-6">Features</h3>
+        <section class="p-2">
+          <div class="row">
+            <div class="col-md-4 mt-2">
+              <div class="card text-center">
+                <img
+                  th:src="@{images/people-working.jpg}"
+                  class="card-img-top"
+                  alt="Experienced Tutors"
+                />
+                <div class="card-body">
+                  <i class="fas fa-chalkboard-teacher fa-4x mb-3"></i>
+                  <h3 class="card-title">Experienced Tutors</h3>
+                  <p class="card-text">
+                    Connect with highly qualified and experienced tutors for
+                    your students.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mt-2">
+              <div class="card text-center">
+                <img
+                  th:src="@{images/students.jpg}"
+                  class="card-img-top"
+                  alt="User-friendly Interface"
+                />
+                <div class="card-body">
+                  <i class="fas fa-users fa-4x mb-3"></i>
+                  <h3 class="card-title">User-friendly Interface</h3>
+                  <p class="card-text">
+                    An easy-to-use platform that simplifies tutor management for
+                    administrators.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mt-2">
+              <div class="card text-center">
+                <img
+                  th:src="@{images/teacher-smart.jpg}"
+                  class="card-img-top"
+                  alt="Customizable Settings"
+                />
+                <div class="card-body">
+                  <i class="fas fa-cogs fa-4x mb-3"></i>
+                  <h3 class="card-title">Customizable Settings</h3>
+                  <p class="card-text">
+                    Adjust settings to meet the unique needs of your educational
+                    institution.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Beautiful Call to Action Section -->
+      <div class="jumbotron text-center alert alert-success text-info">
+        <div class="container">
+          <h2>Ready to get started?</h2>
+          <p>
+            Sign up now and revolutionize the way you manage tutors and
+            students.
+          </p>
+          <a class="btn btn-outline-info" th:href="@{/sSignup}">Sign Up</a>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

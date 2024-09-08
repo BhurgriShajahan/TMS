@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="/admin/base::layout(~{::section})"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>myProfile</title>
+  </head>
+  <body>
+    <section>
+      <!-- ----------------------------------- -->
+      <div class="container p-4">
+        <div class="row">
+          <div class="col-md-12 md-6 sm-4 ml-6">
+            <div class="card">
+              <h4 class="text-center text-info bg-dark p-2">
+                Update My Profile
+              </h4>
+              <div class="card-header">
+                <div class="card-body text-center">
+                  <!-- User Specific profile image -->
+                  <img
+                    th:src="@{'/images/'+ ${u.image}}"
+                    alt=""
+                    class="myProfile my-3"
+                  />
+
+                  <div></div>
+                  <form
+                    th:action="@{/admin/editProfileProcess}"
+                    th:method="post"
+                    th:object="${u}"
+                    enctype="multipart/form-data"
+                  >
+                    <div class="table-responsive">
+                      <table class="table text-black text-center">
+                        <tr>
+                          <td hidden="">
+                            <input name="id" th:value="${u.id}" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="col">Name</th>
+                          <td>
+                            <input
+                              class="form-control"
+                              required="required"
+                              placeholder="Your name"
+                              name="name"
+                              th:value="${u.name}"
+                            />
+                          </td>
+                        </tr>
+                       <tr>
+                          <th scope="col">Email</th>
+                          <td>
+                            <input
+                              class="form-control"
+                              required="required"
+                              placeholder="Email address"
+                              name="email"
+                              th:value="${u.email}"
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="col">Choose Profile</th>
+                          <td>
+                            <input
+                              type="file"
+                              class="form-control"
+                              name="proImg"
+                            />
+                            <input
+                              type="submit"
+                              class="btn btn-primary btn-block my-3"
+                              value="Save & Update"
+                            />
+                            <a
+                              th:href="@{/admin/myProfile}"
+                              class="btn btn-danger btn-block"
+                              >Cancel</a
+                            >
+                          </td>
+                        </tr>
+                        <tbody></tbody>
+                      </table>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
