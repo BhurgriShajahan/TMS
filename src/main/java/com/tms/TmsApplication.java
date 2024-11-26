@@ -8,7 +8,7 @@ public class TmsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TmsApplication.class, args);
-		System.out.println("Application Started..on prt 8080");
+		System.out.println("Application Started on port: 8080");
 	}
 
 }
