@@ -101,7 +101,6 @@ public class AdminController {
 		return "/admin/myProfile";
 	}
 
-	// ----------------------
 	// Edit Profile ByUserId
 	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/editProfile/{id}")
@@ -123,7 +122,6 @@ public class AdminController {
 		return "/admin/pageNotFound";
 	}
 
-	// -----------------------
 	// Edit Profile Process Form
 	@Transactional
 	@PreAuthorize("hasRole('ADMIN')")
@@ -157,7 +155,6 @@ public class AdminController {
 
 		return "redirect:/admin/myProfile";
 	}
-	// Edit Profile Process Form End
 
 	// View Contact us / Contacts
 
